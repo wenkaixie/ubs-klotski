@@ -16,10 +16,13 @@ def evaluate():
     # Define available functions
     def puts(args, line_num):
         logger.info(f"Executing 'puts' with args: {args}")
-        if len(args) != 1 or not isinstance(args[0], str):
+        if len(args) != 1:
             return None, error_message(line_num)
-        print_output.append(args[0])
+        
+        # Convert any argument to a string before appending to print_output
+        print_output.append(str(args[0]))
         return None, None
+
 
     def set_var(args, line_num):
         logger.info(f"Executing 'set' with args: {args}")
