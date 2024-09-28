@@ -105,6 +105,12 @@ def evaluate():
         if len(args) != 2:
             return None, error_message(line_num)
         return args[0] == args[1], None
+    
+    def not_eq(args, line_num):
+        logger.info(f"Executing 'not_eq' with args: {args}")
+        if len(args) != 2:
+            return None, error_message(line_num)
+        return args[0] != args[1], None
 
     def str_func(args, line_num):
         logger.info(f"Executing 'str' with args: {args}")
@@ -130,7 +136,8 @@ def evaluate():
         "set": set_var,
         "gt": gt,
         "lt": lt,
-        "eq": eq,
+        "equal": eq,
+        "not_equal": not_eq,
         "str": str_func
     }
 
